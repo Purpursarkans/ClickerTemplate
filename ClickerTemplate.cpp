@@ -1,5 +1,10 @@
 #include "Head.hpp"
 
+void pause()
+{
+    system("pause");
+}
+
 void LClickOnCoord(int X, int Y)
 {
     SetCursorPos(X, Y);
@@ -45,7 +50,7 @@ int main()
     std::cout << hwnd << std::endl;
     Timeout(5000);
 
-    LClickOnCoord(P.x, P.y);
+    //LClickOnCoord(P.x, P.y);
 
     SendMessageA(hwnd, MOUSEEVENTF_LEFTDOWN, 0, MAKELPARAM(P.x, P.y));
     Timeout(500);

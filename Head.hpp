@@ -3,7 +3,6 @@
 
 #include <Windows.h>
 #include <iostream>
-#include "Cross/Cross.hpp"
 
 
 #endif
