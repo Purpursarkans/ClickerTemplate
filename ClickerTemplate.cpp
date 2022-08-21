@@ -51,7 +51,6 @@ int main()
     Timeout(5000);
 
     //LClickOnCoord(P.x, P.y);
-    
 
     SendMessageA(hwnd, MOUSEEVENTF_LEFTDOWN, 0, MAKELPARAM(P.x, P.y));
     Timeout(500);
