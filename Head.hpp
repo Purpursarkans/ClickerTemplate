@@ -4,5 +4,6 @@
 #include <Windows.h>
 #include <iostream>
 
+#include "Actions.hpp"
 
 #endif
