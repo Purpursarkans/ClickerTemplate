@@ -76,17 +76,17 @@ void RClickOnCoordReal(int X, int Y)
 
 void PostPressButtonHWND(HWND GameHwnd, int key, int PressOnMSec)
 {
-    PostMessage(GameHwnd, WM_KEYDOWN, key, 0);
+    PostMessage(GameHwnd, WM_KEYDOWN, key, ((0x00 << 24) | (0x11 << 16) | 1));
     SleepRnd(PressOnMSec);
-    PostMessage(GameHwnd, WM_KEYUP, key, 0);
+    PostMessage(GameHwnd, WM_KEYUP, key, ((0xc0 << 24) | (0x11 << 16) | 1));
     SleepRnd(ToSec(1));
 }
 
 void SendPressButtonHWND(HWND GameHwnd, int key, int PressOnMSec)
 {
-    SendMessage(GameHwnd, WM_KEYDOWN, key, 0);
+    SendMessage(GameHwnd, WM_KEYDOWN, key, ((0x00 << 24) | (0x11 << 16) | 1));
     SleepRnd(PressOnMSec);
-    SendMessage(GameHwnd, WM_KEYUP, key, 0);
+    SendMessage(GameHwnd, WM_KEYUP, key, ((0xc0 << 24) | (0x11 << 16) | 1));
     SleepRnd(ToSec(1));
 }
 
