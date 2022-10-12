@@ -4,10 +4,13 @@
 #include <Windows.h>
 #include <iostream>
 #include <random>
-#include <string>
+#define ON 1
+#define OFF 0
 
-const std::string RANDOM = "ON";
+const bool RANDOM = ON;
 
+#include "Keys.hpp"
 #include "Actions.hpp"
+
 
 #endif

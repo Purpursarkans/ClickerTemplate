@@ -6,7 +6,7 @@
 
 void SleepRnd(int slp)
 {
-    if (RANDOM == "ON")
+    if (RANDOM == ON)
     {
         int rd = rand() % slp + 1;
         Sleep(rd);
@@ -18,10 +18,11 @@ void SleepRnd(int slp)
     
 }
 
-void pause()
-{
-    system("pause");
-}
+int ToSec(int sec) { return sec * 1000; }
+
+int ToMin(int min) { return min * 60000; }
+
+void pause() { system("pause"); }
 
 void LClickOnCoordHWND(HWND GameHwnd, int x, int y)
 {
@@ -73,18 +74,55 @@ void RClickOnCoordReal(int X, int Y)
     mouse_event(MOUSEEVENTF_RIGHTUP, X, Y, 0, 0);
 }
 
+void PostPressButtonHWND(HWND GameHwnd, int key, int PressOnMSec)
+{
+    PostMessage(GameHwnd, WM_KEYDOWN, key, 0);
+    SleepRnd(PressOnMSec);
+    PostMessage(GameHwnd, WM_KEYUP, key, 0);
+    SleepRnd(ToSec(1));
+}
+
+void SendPressButtonHWND(HWND GameHwnd, int key, int PressOnMSec)
+{
+    SendMessage(GameHwnd, WM_KEYDOWN, key, 0);
+    SleepRnd(PressOnMSec);
+    SendMessage(GameHwnd, WM_KEYUP, key, 0);
+    SleepRnd(ToSec(1));
+}
+
+void PressButtonReal(int key, int PressOnMSec)
+{
+    keybd_event(key, MapVirtualKey(key, 0), 0, 0);
+    SleepRnd(PressOnMSec);
+    keybd_event(key, MapVirtualKey(key, 0), KEYEVENTF_KEYUP, 0);
+}
+
 void Timeout(int sleep)
 {
-    SleepRnd(sleep);
+    Sleep(sleep);
+}
+
+void TimeoutRnd(int sleep)
+{
+    Sleep(sleep);
 }
 
 void TimeoutBeep(int sleep)
 {
+    Sleep(sleep);
+    Beep(100, 100);
+}
+void TimeoutBeepRnd(int sleep)
+{
     SleepRnd(sleep);
     Beep(100, 100);
 }
-
 void TimeoutBeep(int sleep, DWORD dwFreq, DWORD dwDuration)
+{
+    Sleep(sleep);
+    Beep(dwFreq, dwDuration);
+}
+void TimeoutBeepRnd(int sleep, DWORD dwFreq, DWORD dwDuration)
 {
     SleepRnd(sleep);
     Beep(dwFreq, dwDuration);
